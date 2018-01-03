@@ -80,13 +80,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function checkGameOver() {
     if (gameOver === true) {
-      display.innerText = `${currentPlayer} has won!`
-      return false
+      display.innerText = `${currentPlayer} has won!`;
+      return false;
     } else if (moves === 9) {
-      display.innerText = `${currentPlayer} has won!`
-      return false
-    }
-    return true
+      display.innerText = 'Draw!';
+      return false;
+    };
+    return true;
   };
 
   function checkRows() {
