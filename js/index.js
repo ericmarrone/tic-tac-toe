@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var gameOver = false;
   var moves = 0;
   var startGame = document.querySelector('button');
+
   var board = document.querySelector('#board');
   var gameCells = document.querySelectorAll('.cell');
   var gameRows = document.querySelectorAll('.row');
@@ -21,14 +22,20 @@ document.addEventListener('DOMContentLoaded', function() {
   // Setup board and gameplay
   startGame.addEventListener('click', function() {
     board.style.display = "block";
-    board.style.position = 'absolute'
-    board.style.top = '35%';
-    board.style.left = '40%';
+    // board.style.position = 'absolute'
+    // board.style.top = '25%';
+    board.style.margin = '5% auto';
     board.style.width = '500px'
     board.style.height = '500px'
     board.style.border = '2px solid black';
     table.style.width = '100%';
     table.style.height = '100%';
+    display.style.width = '100%';
+    display.style.height = '3.2rem'
+    display.style.fontFamily = 'Helvetica';
+    display.style.textAlign = 'center';
+    display.style.fontSize = '3rem';
+
     gameCells.forEach(function(gameCell) {
       gameCell.style.border = '2px solid black';
       gameCell.style.margin = '0';
@@ -53,9 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
         checkRows()
         checkColumns()
         checkDiagonals()
-        checkGameOver()
-        switchPlayer()
-      }
+        if (checkGameOver()) {
+          switchPlayer()
+        };
+      };
     });
   });
 
@@ -72,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function checkGameOver() {
     if (gameOver === true) {
-      switchPlayer()
       display.innerText = `${currentPlayer} has won!`
       return false
     } else if (moves === 9) {
